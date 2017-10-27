@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
 @property (strong, nonatomic) UIDatePicker *datePicker;
+- (IBAction)addTagButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender;
 
 
 // TODO: Add tag picker
@@ -47,4 +49,22 @@
 }
 
 
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tagCell"];
+    
+    cell.textLabel.text = @"Tag, you're it";
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+- (IBAction)addTagButtonPressed:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
