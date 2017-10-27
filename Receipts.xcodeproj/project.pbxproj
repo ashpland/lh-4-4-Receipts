@@ -14,6 +14,7 @@
 		4980490F1FA3CE4000C26696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4980490E1FA3CE4000C26696 /* Assets.xcassets */; };
 		498049121FA3CE4000C26696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498049101FA3CE4000C26696 /* LaunchScreen.storyboard */; };
 		498049151FA3CE4000C26696 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 498049141FA3CE4000C26696 /* main.m */; };
+		4980491D1FA3D44600C26696 /* AddReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4980491C1FA3D44600C26696 /* AddReceiptViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		498049111FA3CE4000C26696 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		498049131FA3CE4000C26696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		498049141FA3CE4000C26696 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4980491B1FA3D44600C26696 /* AddReceiptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddReceiptViewController.h; sourceTree = "<group>"; };
+		4980491C1FA3D44600C26696 /* AddReceiptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddReceiptViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,8 @@
 				498049031FA3CE4000C26696 /* AppDelegate.m */,
 				498049051FA3CE4000C26696 /* ViewController.h */,
 				498049061FA3CE4000C26696 /* ViewController.m */,
+				4980491B1FA3D44600C26696 /* AddReceiptViewController.h */,
+				4980491C1FA3D44600C26696 /* AddReceiptViewController.m */,
 				498049081FA3CE4000C26696 /* Main.storyboard */,
 				4980490E1FA3CE4000C26696 /* Assets.xcassets */,
 				498049101FA3CE4000C26696 /* LaunchScreen.storyboard */,
@@ -146,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4980490D1FA3CE4000C26696 /* Receipts.xcdatamodeld in Sources */,
+				4980491D1FA3D44600C26696 /* AddReceiptViewController.m in Sources */,
 				498049071FA3CE4000C26696 /* ViewController.m in Sources */,
 				498049151FA3CE4000C26696 /* main.m in Sources */,
 				498049041FA3CE4000C26696 /* AppDelegate.m in Sources */,
