@@ -11,7 +11,9 @@
 @interface AddReceiptViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UITextField *dateTextField;
+@property (strong, nonatomic) UIDatePicker *datePicker;
+
 
 // TODO: Add tag picker
 
@@ -19,24 +21,30 @@
 
 @implementation AddReceiptViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    [self setupDatePicker];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupDatePicker {
+    self.datePicker = [UIDatePicker new];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    self.dateTextField.inputView = self.datePicker;
+    
+    // TODO: Set delegate
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    // TODO: update self.dateTextField.text with input
 }
-*/
+
 
 @end

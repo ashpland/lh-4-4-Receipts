@@ -99,12 +99,6 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="q8q-Gv-g4j">
-                                <rect key="frame" x="0.0" y="172" width="375" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="530830490.01609302">
-                                    <!--2017-10-27 20:54:50 +0000-->
-                                </date>
-                            </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQj-wy-ekG">
                                 <rect key="frame" x="16" y="36" width="120" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
@@ -112,13 +106,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaE-Eo-bGd">
-                                <rect key="frame" x="8" y="88" width="67.5" height="30"/>
+                                <rect key="frame" x="8" y="134" width="67.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <color key="textColor" red="0.58105844259999995" green="0.12855249639999999" blue="0.57453137639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDZ-eU-jtb">
+                                <rect key="frame" x="16" y="88" width="61" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <color key="textColor" red="0.58105844259999995" green="0.12855249639999999" blue="0.57453137639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description of your purchase" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UPv-CG-OhK">
-                                <rect key="frame" x="16" y="126" width="343" height="30"/>
+                                <rect key="frame" x="16" y="172" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XrZ-Hl-Ws9">
+                                <rect key="frame" x="93" y="88" width="266" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -127,25 +133,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jeb-aj-Tuz" firstAttribute="leading" secondItem="RQj-wy-ekG" secondAttribute="trailing" constant="16" id="4FG-Nz-4WO"/>
+                            <constraint firstItem="cDZ-eU-jtb" firstAttribute="top" secondItem="RQj-wy-ekG" secondAttribute="bottom" constant="16" id="59P-Oz-Ewh"/>
                             <constraint firstItem="RQj-wy-ekG" firstAttribute="leading" secondItem="qqE-BL-7Jh" secondAttribute="leading" constant="16" id="5sy-aU-dU9"/>
-                            <constraint firstItem="q8q-Gv-g4j" firstAttribute="width" secondItem="d9D-zH-f5q" secondAttribute="width" id="83Y-Zo-q21"/>
                             <constraint firstItem="UPv-CG-OhK" firstAttribute="top" secondItem="AaE-Eo-bGd" secondAttribute="bottom" constant="8" symbolType="layoutAnchor" id="D3z-Hm-BVd"/>
+                            <constraint firstItem="cDZ-eU-jtb" firstAttribute="leading" secondItem="RQj-wy-ekG" secondAttribute="leading" id="DwY-7F-zyd"/>
+                            <constraint firstItem="XrZ-Hl-Ws9" firstAttribute="centerY" secondItem="cDZ-eU-jtb" secondAttribute="centerY" id="EBK-Kz-5XO"/>
                             <constraint firstItem="qqE-BL-7Jh" firstAttribute="trailing" secondItem="Jeb-aj-Tuz" secondAttribute="trailing" constant="16" id="IPf-TR-a1w"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AaE-Eo-bGd" secondAttribute="trailingMargin" id="Ks0-3b-pY2"/>
                             <constraint firstItem="Jeb-aj-Tuz" firstAttribute="centerY" secondItem="RQj-wy-ekG" secondAttribute="centerY" id="Ks8-cb-8e4"/>
-                            <constraint firstItem="q8q-Gv-g4j" firstAttribute="centerX" secondItem="qqE-BL-7Jh" secondAttribute="centerX" id="Lwe-Rf-W84"/>
                             <constraint firstItem="RQj-wy-ekG" firstAttribute="top" secondItem="qqE-BL-7Jh" secondAttribute="top" constant="16" id="Rin-7h-Wee"/>
-                            <constraint firstItem="AaE-Eo-bGd" firstAttribute="top" secondItem="RQj-wy-ekG" secondAttribute="bottom" constant="16" id="SzU-uk-YjW"/>
+                            <constraint firstItem="AaE-Eo-bGd" firstAttribute="top" secondItem="cDZ-eU-jtb" secondAttribute="bottom" constant="16" id="SzU-uk-YjW"/>
                             <constraint firstItem="qqE-BL-7Jh" firstAttribute="trailing" secondItem="UPv-CG-OhK" secondAttribute="trailing" constant="16" id="Uh8-oI-UoS"/>
                             <constraint firstItem="UPv-CG-OhK" firstAttribute="leading" secondItem="AaE-Eo-bGd" secondAttribute="leadingMargin" id="aUL-vN-Y11"/>
                             <constraint firstItem="AaE-Eo-bGd" firstAttribute="leadingMargin" secondItem="RQj-wy-ekG" secondAttribute="leading" id="bDN-eq-on0"/>
-                            <constraint firstItem="q8q-Gv-g4j" firstAttribute="top" secondItem="UPv-CG-OhK" secondAttribute="bottom" constant="16" id="e38-4d-Jf8"/>
+                            <constraint firstItem="qqE-BL-7Jh" firstAttribute="trailing" secondItem="XrZ-Hl-Ws9" secondAttribute="trailing" constant="16" id="k6C-OQ-lEc"/>
+                            <constraint firstItem="XrZ-Hl-Ws9" firstAttribute="leading" secondItem="cDZ-eU-jtb" secondAttribute="trailing" constant="16" id="x4V-yq-9s0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qqE-BL-7Jh"/>
                     </view>
                     <connections>
                         <outlet property="amountTextField" destination="Jeb-aj-Tuz" id="sNl-7K-d5V"/>
-                        <outlet property="datePicker" destination="q8q-Gv-g4j" id="cTo-tG-loH"/>
+                        <outlet property="dateTextField" destination="XrZ-Hl-Ws9" id="pov-VK-qaf"/>
                         <outlet property="descriptionTextField" destination="UPv-CG-OhK" id="PrB-E6-r3u"/>
                     </connections>
                 </viewController>
