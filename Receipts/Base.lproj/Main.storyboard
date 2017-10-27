@@ -225,6 +225,7 @@
                         <outlet property="amountTextField" destination="Jeb-aj-Tuz" id="sNl-7K-d5V"/>
                         <outlet property="dateTextField" destination="XrZ-Hl-Ws9" id="pov-VK-qaf"/>
                         <outlet property="descriptionTextField" destination="UPv-CG-OhK" id="PrB-E6-r3u"/>
+                        <outlet property="tableView" destination="cXH-bl-Cse" id="od3-dI-eZZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Qy-Mw-LvD" userLabel="First Responder" sceneMemberID="firstResponder"/>

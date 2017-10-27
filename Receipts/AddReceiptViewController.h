@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "Tag+CoreDataClass.h"
 
-@interface AddReceiptViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AddReceiptViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 @end
