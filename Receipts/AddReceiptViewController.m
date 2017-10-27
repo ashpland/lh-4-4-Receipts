@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UIDatePicker *datePicker;
 - (IBAction)addTagButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)clearInputButton:(UIButton *)sender;
 
 
 // TODO: Add tag picker
@@ -37,6 +38,9 @@
 - (void)setupDatePicker {
     self.datePicker = [UIDatePicker new];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    //self.datePicker
+    
     self.dateTextField.inputView = self.datePicker;
     
     // TODO: Set delegate
@@ -45,6 +49,9 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    NSLog(@"Picker View Called");
+    
+    
     // TODO: update self.dateTextField.text with input
 }
 
@@ -66,5 +73,10 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)clearInputButton:(UIButton *)sender {
+    [self.view endEditing:YES];
 }
 @end
