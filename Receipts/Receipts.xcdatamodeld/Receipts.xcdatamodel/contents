@@ -4,8 +4,14 @@
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="newRelationship" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="tagName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Receipt" inverseName="newRelationship" inverseEntity="Receipt" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Tag" positionX="178" positionY="-0" width="128" height="73"/>
     </elements>
 </model>
