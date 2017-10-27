@@ -9,6 +9,11 @@
 #import "AddReceiptViewController.h"
 
 @interface AddReceiptViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+// TODO: Add tag picker
 
 @end
 
