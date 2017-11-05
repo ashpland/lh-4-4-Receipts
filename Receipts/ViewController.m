@@ -27,14 +27,14 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiptCell"];
-    
-    cell.textLabel.text = @"Yoooo";
-    
+    Receipt *receipt = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = receipt.note;
+
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [self.fetchedResultsController fetchedObjects].count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
