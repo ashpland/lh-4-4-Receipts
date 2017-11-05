@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "Tag+CoreDataClass.h"
+#import "Receipt+CoreDataClass.h"
 
-@interface AddReceiptViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AddReceiptViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextFieldDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController<Tag *> *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) Receipt *receiptToAdd;
+
 
 @end

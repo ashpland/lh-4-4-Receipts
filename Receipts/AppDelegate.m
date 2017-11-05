@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "TagManager.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +17,13 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+    ViewController *mainViewController =  (ViewController *)navController.viewControllers[0];
+    mainViewController.managedObjectContext = self.persistentContainer.viewContext;
+    
+    [TagManager sharedTagManager].managedObjectContext = self.persistentContainer.viewContext;
+    
     return YES;
 }
 
