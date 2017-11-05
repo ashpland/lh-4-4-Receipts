@@ -123,9 +123,8 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tagCell"];
-    
-    cell.textLabel.text = @"Tag, you're it";
-    
+    Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = tag.tagName;
     return cell;
 }
 
@@ -134,12 +133,7 @@
 //}
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
-    
-//    return [self.fetchedResultsController fetchedObjects].count;
-//
-//    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-//    return [sectionInfo numberOfObjects];
+    return [self.fetchedResultsController fetchedObjects].count;
 }
 
 - (void)configureCell:(UITableViewCell *)cell withTag:(Tag *)tag {
@@ -159,7 +153,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tagName" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tagName" ascending:YES];
     
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
