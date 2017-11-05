@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Receipt" representedClassName="Receipt" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="newRelationship" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="receiptTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="taggedReceipts" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
         <attribute name="tagName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Receipt" inverseName="newRelationship" inverseEntity="Receipt" syncable="YES"/>
+        <relationship name="taggedReceipts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Receipt" inverseName="receiptTags" inverseEntity="Receipt" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Tag" positionX="178" positionY="-0" width="128" height="73"/>
+        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Tag" positionX="178" positionY="-0" width="128" height="75"/>
     </elements>
 </model>

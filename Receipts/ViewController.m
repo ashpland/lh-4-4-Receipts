@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import "AddReceiptViewController.h"
+#import "TagManager.h"
 
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) TagManager *tagManager;
 
 @end
 
@@ -19,26 +21,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.tagManager = [TagManager sharedTagManager];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];    
+}
 
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiptCell"];
-    Receipt *receipt = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Receipt *receipt = [self.tagManager receiptAtIndexPath:indexPath];
     [self configureCell:cell withReceipt:receipt];
     return cell;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.tagManager tagNameForTag:section];
+}
+
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.fetchedResultsController fetchedObjects].count;
+    return [self.tagManager numberOfReceiptsForTag:section];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [self.tagManager numberOfTags];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -87,6 +95,14 @@
     }
 }
 
+//NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
+//NSSortDescriptor *departmentSort = [NSSortDescriptor sortDescriptorWithKey:@"department.name" ascending:YES];
+//NSSortDescriptor *lastNameSort = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
+//[request setSortDescriptors:@[departmentSort, lastNameSort]];
+//NSManagedObjectContext *moc = [[self dataController] managedObjectContext];
+//[self setFetchedResultsController:[[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:@"department.name" cacheName:nil]];
+//[[self fetchedResultsController] setDelegate:self];
+
 
 #pragma mark - Fetched results controller
 
@@ -101,9 +117,10 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
     
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    NSSortDescriptor *timeSort = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+    
+    [fetchRequest setSortDescriptors:@[timeSort]];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
@@ -121,55 +138,55 @@
     _fetchedResultsController = aFetchedResultsController;
     return _fetchedResultsController;
 }
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        default:
-            return;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.tableView;
-    
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withReceipt:anObject];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withReceipt:anObject];
-            [tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
-}
+//
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+//    [self.tableView beginUpdates];
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+//           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+//    switch(type) {
+//        case NSFetchedResultsChangeInsert:
+//            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//
+//        case NSFetchedResultsChangeDelete:
+//            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//
+//        default:
+//            return;
+//    }
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+//       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+//      newIndexPath:(NSIndexPath *)newIndexPath {
+//    UITableView *tableView = self.tableView;
+//
+//    switch(type) {
+//        case NSFetchedResultsChangeInsert:
+//            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//
+//        case NSFetchedResultsChangeDelete:
+//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//
+//        case NSFetchedResultsChangeUpdate:
+//            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withReceipt:anObject];
+//            break;
+//
+//        case NSFetchedResultsChangeMove:
+//            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withReceipt:anObject];
+//            [tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+//            break;
+//    }
+//}
+//
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+//    [self.tableView endUpdates];
+//}
 
 - (void)configureCell:(UITableViewCell *)cell withReceipt:(Receipt *)receipt {
     cell.textLabel.text = receipt.note;

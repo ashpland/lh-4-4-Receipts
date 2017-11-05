@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "TagManager.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,8 @@
     UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
     ViewController *mainViewController =  (ViewController *)navController.viewControllers[0];
     mainViewController.managedObjectContext = self.persistentContainer.viewContext;
+    
+    [TagManager sharedTagManager].managedObjectContext = self.persistentContainer.viewContext;
     
     return YES;
 }
