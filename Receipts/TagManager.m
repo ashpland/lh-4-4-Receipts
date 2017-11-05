@@ -35,7 +35,12 @@
 }
 
 -(NSInteger)numberOfReceiptsForTag:(NSInteger)tagNumber {
-    return [self receiptsForTagNumber:tagNumber].count;
+    Tag *tag = [self getTagForTagNumber:tagNumber];
+    NSInteger count = tag.taggedReceipts.count;
+    NSSet *receipts = tag.taggedReceipts;
+    NSArray *recArray = [receipts allObjects];
+
+    return recArray.count;
 }
 
 -(NSString *)tagNameForTag:(NSInteger)tagNumber {
@@ -47,7 +52,10 @@
 }
 
 -(Receipt *)receiptAtIndexPath:(NSIndexPath *)indexPath {
-    return [[[self receiptsForTagNumber:indexPath.section] allObjects] objectAtIndex:indexPath.row];
+    NSArray *receiptArray = [[self receiptsForTagNumber:indexPath.section] allObjects];
+    
+    
+    return [receiptArray objectAtIndex:indexPath.row];
 }
 
 

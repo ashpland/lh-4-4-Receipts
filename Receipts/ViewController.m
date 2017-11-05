@@ -24,7 +24,9 @@
     self.tagManager = [TagManager sharedTagManager];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
 
 
 

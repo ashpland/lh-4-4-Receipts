@@ -17,7 +17,7 @@
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)clearInputButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableSet *selectedTags;
+@property (strong, nonatomic) NSMutableSet<Tag *> *selectedTags;
 
 @end
 
@@ -30,6 +30,7 @@
     
     [self setupDatePicker];
     [self setupTextFields];
+    self.selectedTags = [NSMutableSet new];
 }
 
 - (void)setupDatePicker {
