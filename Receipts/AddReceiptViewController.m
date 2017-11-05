@@ -34,7 +34,7 @@
     
     
     [self setupDatePicker];
-    
+    [self setupTextFields];
 }
 
 - (void)setupDatePicker {
@@ -48,6 +48,9 @@
     // TODO: Set delegate
 }
 
+- (void)setupTextFields {
+    self.descriptionTextField.delegate = self;
+}
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
@@ -61,6 +64,13 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if ([textField isEqual:self.descriptionTextField]) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 
 

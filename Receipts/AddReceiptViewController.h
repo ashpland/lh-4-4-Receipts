@@ -10,6 +10,6 @@
 #import <CoreData/CoreData.h>
 #import "Tag+CoreDataClass.h"
 
-@interface AddReceiptViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface AddReceiptViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
 @end
