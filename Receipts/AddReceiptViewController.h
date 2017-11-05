@@ -12,4 +12,8 @@
 
 @interface AddReceiptViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
+@property (strong, nonatomic) NSFetchedResultsController<Tag *> *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+
 @end

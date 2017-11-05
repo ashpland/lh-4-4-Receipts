@@ -17,9 +17,6 @@
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)clearInputButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSFetchedResultsController<Tag *> *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
 
 // TODO: Add tag picker
 
@@ -59,7 +56,35 @@
 }
 
 - (IBAction)addTagButtonPressed:(UIBarButtonItem *)sender {
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+////    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//
+////    Todo *newTodo = [[Todo alloc] initWithContext:context];
+////    newTodo.title = @"New Todo";
     
+    
+    UIAlertController *newTagAlert = [UIAlertController alertControllerWithTitle:@"What's your new tag?"
+                                                                         message:nil
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    [newTagAlert addTextFieldWithConfigurationHandler:^(UITextField *textField){
+        textField.placeholder = @"New Tag";
+    }];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        NSString *newTagName = newTagAlert.textFields[0].text;
+                                        if (newTagName) {
+                                            NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+                                            Tag *newTag = [[Tag alloc] initWithContext:context];
+                                            newTag.tagName = newTagName;
+                                        }
+                                     }];
+    
+    [newTagAlert addAction:defaultAction];
+    [self presentViewController:newTagAlert animated:YES completion:nil];
+
 }
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
@@ -104,8 +129,17 @@
     return cell;
 }
 
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return [[self.fetchedResultsController sections] count];
+//}
+
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5;
+    
+//    return [self.fetchedResultsController fetchedObjects].count;
+//
+//    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+//    return [sectionInfo numberOfObjects];
 }
 
 - (void)configureCell:(UITableViewCell *)cell withTag:(Tag *)tag {
@@ -125,7 +159,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tagName" ascending:NO];
     
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
