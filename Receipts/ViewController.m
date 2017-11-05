@@ -29,6 +29,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiptCell"];
     Receipt *receipt = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = receipt.note;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", receipt.amount];
 
     return cell;
 }
@@ -48,8 +49,12 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AddReceiptSegue"]) {
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        Receipt *newReceipt = [[Receipt alloc] initWithContext:context];
+        
         AddReceiptViewController *newReceiptVC = (AddReceiptViewController *)segue.destinationViewController;
         newReceiptVC.managedObjectContext = self.managedObjectContext;
+        newReceiptVC.receiptToAdd = newReceipt;
     }
 }
 

@@ -17,8 +17,7 @@
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)clearInputButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-// TODO: Add tag picker
+@property (strong, nonatomic) NSMutableSet *selectedTags;
 
 @end
 
@@ -28,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     [self setupDatePicker];
     [self setupTextFields];
@@ -56,13 +54,6 @@
 }
 
 - (IBAction)addTagButtonPressed:(UIBarButtonItem *)sender {
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-////    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//
-////    Todo *newTodo = [[Todo alloc] initWithContext:context];
-////    newTodo.title = @"New Todo";
-    
-    
     UIAlertController *newTagAlert = [UIAlertController alertControllerWithTitle:@"What's your new tag?"
                                                                          message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -88,6 +79,10 @@
 }
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
+    self.receiptToAdd.note = self.descriptionTextField.text;
+    self.receiptToAdd.timestamp = [NSDate date];
+    self.receiptToAdd.newRelationship = self.selectedTags;
+ 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -113,9 +108,11 @@
     switch (checkmark) {
         case UITableViewCellAccessoryCheckmark:
             theCell.accessoryType = UITableViewCellAccessoryNone;
+            [self.selectedTags removeObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
             break;
         default:
             theCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self.selectedTags addObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
             break;
     }
     theCell.selected = NO;
