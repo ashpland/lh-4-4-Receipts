@@ -29,12 +29,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiptCell"];
     Receipt *receipt = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = receipt.note;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", receipt.amount];
-
-    cell.textLabel.text = @"Note text";
-    cell.detailTextLabel.text = @"34.50";
-
+    [self configureCell:cell withReceipt:receipt];
     return cell;
 }
 
@@ -71,7 +66,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest<Receipt *> *fetchRequest = Receipt.fetchRequest;
+    NSFetchRequest<Receipt *> *fetchRequest = [Receipt fetchRequest];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
@@ -148,7 +143,8 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell withReceipt:(Receipt *)receipt {
-    
+    cell.textLabel.text = receipt.note;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%@", receipt.amount];
 }
 
 @end

@@ -79,10 +79,12 @@
 }
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
+    self.receiptToAdd.amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
     self.receiptToAdd.note = self.descriptionTextField.text;
     self.receiptToAdd.timestamp = [NSDate date];
     self.receiptToAdd.newRelationship = self.selectedTags;
- 
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -142,7 +144,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest<Tag *> *fetchRequest = Tag.fetchRequest;
+    NSFetchRequest<Tag *> *fetchRequest = [Tag fetchRequest];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
