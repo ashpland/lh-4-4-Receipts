@@ -25,7 +25,7 @@
                                     <barButtonItem title="Add Receipt" id="us1-am-lZZ">
                                         <connections>
                                             <action selector="addReceiptButtonPress:" destination="BYZ-38-t0r" id="wb9-af-4gy"/>
-                                            <segue destination="lOX-rN-a9T" kind="presentation" id="jkK-Ad-CTt"/>
+                                            <segue destination="lOX-rN-a9T" kind="presentation" identifier="AddReceiptSegue" id="jkK-Ad-CTt"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

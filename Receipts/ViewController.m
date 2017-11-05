@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AddReceiptViewController.h"
 
 @interface ViewController ()
 - (IBAction)addReceiptButtonPress:(UIBarButtonItem *)sender;
@@ -42,6 +43,15 @@
 
 
 - (IBAction)addReceiptButtonPress:(UIBarButtonItem *)sender {
-    NSLog(@"Add pressed");
+
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddReceiptSegue"]) {
+        AddReceiptViewController *newReceiptVC = (AddReceiptViewController *)segue.destinationViewController;
+        newReceiptVC.managedObjectContext = self.managedObjectContext;
+    }
+}
+
+
 @end
