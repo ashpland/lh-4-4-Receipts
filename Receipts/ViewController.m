@@ -25,7 +25,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
+    [self.tableView reloadData];    
 }
 
 

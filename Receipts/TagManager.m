@@ -62,9 +62,11 @@
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController<Tag *> *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
+
+    // Getting rid of these lines should probably be replaced with something to do with the delegate
+    //    if (_fetchedResultsController != nil) {
+//        return _fetchedResultsController;
+//    }
     
     NSFetchRequest<Tag *> *fetchRequest = [Tag fetchRequest];
     
@@ -92,7 +94,6 @@
     _fetchedResultsController = aFetchedResultsController;
     return _fetchedResultsController;
 }
-
 
 
 
