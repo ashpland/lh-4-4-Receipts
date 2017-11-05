@@ -89,8 +89,7 @@
     self.receiptToAdd.amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text];
     self.receiptToAdd.note = self.descriptionTextField.text;
     self.receiptToAdd.timestamp = [NSDate date];
-    self.receiptToAdd.newRelationship = self.selectedTags;
-    
+    self.receiptToAdd.receiptTags = self.selectedTags;
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

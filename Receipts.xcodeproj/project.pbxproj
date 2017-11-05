@@ -15,6 +15,7 @@
 		498049121FA3CE4000C26696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498049101FA3CE4000C26696 /* LaunchScreen.storyboard */; };
 		498049151FA3CE4000C26696 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 498049141FA3CE4000C26696 /* main.m */; };
 		4980491D1FA3D44600C26696 /* AddReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4980491C1FA3D44600C26696 /* AddReceiptViewController.m */; };
+		49D0EA391FAFBDAC0094229C /* TagManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D0EA381FAFBDAC0094229C /* TagManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		498049141FA3CE4000C26696 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4980491B1FA3D44600C26696 /* AddReceiptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddReceiptViewController.h; sourceTree = "<group>"; };
 		4980491C1FA3D44600C26696 /* AddReceiptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddReceiptViewController.m; sourceTree = "<group>"; };
+		49D0EA371FAFBDAC0094229C /* TagManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagManager.h; sourceTree = "<group>"; };
+		49D0EA381FAFBDAC0094229C /* TagManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,8 @@
 				498049061FA3CE4000C26696 /* ViewController.m */,
 				4980491B1FA3D44600C26696 /* AddReceiptViewController.h */,
 				4980491C1FA3D44600C26696 /* AddReceiptViewController.m */,
+				49D0EA371FAFBDAC0094229C /* TagManager.h */,
+				49D0EA381FAFBDAC0094229C /* TagManager.m */,
 				498049081FA3CE4000C26696 /* Main.storyboard */,
 				4980490E1FA3CE4000C26696 /* Assets.xcassets */,
 				498049101FA3CE4000C26696 /* LaunchScreen.storyboard */,
@@ -154,6 +159,7 @@
 				4980491D1FA3D44600C26696 /* AddReceiptViewController.m in Sources */,
 				498049071FA3CE4000C26696 /* ViewController.m in Sources */,
 				498049151FA3CE4000C26696 /* main.m in Sources */,
+				49D0EA391FAFBDAC0094229C /* TagManager.m in Sources */,
 				498049041FA3CE4000C26696 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
