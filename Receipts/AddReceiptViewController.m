@@ -94,11 +94,13 @@
 }
 
 
-# pragma mark - Tag Table View
-
 - (IBAction)clearInputButton:(UIButton *)sender {
     [self.view endEditing:YES];
 }
+
+
+# pragma mark - Tag Table View
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];

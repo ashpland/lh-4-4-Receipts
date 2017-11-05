@@ -24,7 +24,6 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Mrs-C3-Eqt"/>
                                     <barButtonItem title="Add Receipt" id="us1-am-lZZ">
                                         <connections>
-                                            <action selector="addReceiptButtonPress:" destination="BYZ-38-t0r" id="wb9-af-4gy"/>
                                             <segue destination="lOX-rN-a9T" kind="presentation" identifier="AddReceiptSegue" id="jkK-Ad-CTt"/>
                                         </connections>
                                     </barButtonItem>
@@ -79,6 +78,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Receipts" id="aba-9g-uVJ"/>
+                    <connections>
+                        <outlet property="tableView" destination="nFf-CF-S8V" id="mXt-Fs-0Ns"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
