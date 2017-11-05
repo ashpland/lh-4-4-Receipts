@@ -128,10 +128,6 @@
     return cell;
 }
 
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return [[self.fetchedResultsController sections] count];
-//}
-
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.fetchedResultsController fetchedObjects].count;
 }
