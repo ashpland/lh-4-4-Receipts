@@ -56,6 +56,7 @@
 }
 
 - (IBAction)addTagButtonPressed:(UIBarButtonItem *)sender {
+    
 }
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
@@ -67,6 +68,22 @@
 
 - (IBAction)clearInputButton:(UIButton *)sender {
     [self.view endEditing:YES];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    UITableViewCellAccessoryType checkmark = theCell.accessoryType;
+    
+    switch (checkmark) {
+        case UITableViewCellAccessoryCheckmark:
+            theCell.accessoryType = UITableViewCellAccessoryNone;
+            break;
+        default:
+            theCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            break;
+    }
+    theCell.selected = NO;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
